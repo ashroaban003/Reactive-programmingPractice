@@ -1,7 +1,10 @@
 package io.javabrains.reactiveworkshop;
 
 import java.nio.file.OpenOption;
+import java.util.Collections;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Exercise1 {
 
@@ -33,6 +36,10 @@ public class Exercise1 {
 
         // Print first names in userStream for users that have IDs from number stream
         // TODO: Write code here
+        Set<Integer> intstream = StreamSources.intNumbersStream().collect(Collectors.toSet());
+        StreamSources.userStream()
+        .filter(x->intstream.contains(x.getId()))
+        .forEach(System.out::println);
         
 
     } 
